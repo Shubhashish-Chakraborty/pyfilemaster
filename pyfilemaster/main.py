@@ -1,52 +1,70 @@
-def ReadBinFile(path):
-    import pickle
+import pickle
+import csv
 
-    with open(path + ".dat", "rb") as f:
-        try:
+def readBinFile(path):
+    """
+    Reads and prints the contents of a binary `.dat` file.
+
+    Parameters:
+        path (str): Path to the `.dat` file (mention path with or without extension(.dat))
+    """
+    
+    if (path.lower()[-1:-5:-1][::-1] == ".dat"):
+        path = path.lower().rstrip(".dat")
+    else:
+        pass
+    
+    try:
+        with open(path + ".dat", "rb") as f:
             while True:
-                print(pickle.load(f))
-        except EOFError:
-            pass
+                try:
+                    print(pickle.load(f))
+                except EOFError:
+                    break
+    except FileNotFoundError:
+        print(f"File not found: {path}.dat")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
-def convertToCSV(path , CSVFileName = "CSVFile"):
-    import pickle
-    import csv
 
-    with open(path + ".dat", "rb") as f:
-        global File_Data
-        File_Data = []
+def convertBinToCSV(path, CSVFileName="CSVFile_Generated"):
+    """
+    Converts data of a binary `.dat` file to a CSV(Excel) file.
 
-        try:
+    Parameters:
+        path (str): Path to the `.dat` file (with or without extension(.dat)).
+        CSVFileName (str): Name of the output CSV file (default="CSVFile_Generated").
+    """
+
+    if (path.lower()[-1:-5:-1][::-1] == ".dat"):
+        path = path.lower().rstrip(".dat")
+    else:
+        pass
+    
+    try:
+        # Read data from the binary file
+        file_data = []
+        with open(path + ".dat", "rb") as f:
             while True:
-                File_Data.append(pickle.load(f))
-        except EOFError:
-            pass
+                try:
+                    file_data.append(pickle.load(f))
+                except EOFError:
+                    break
 
-    with open(CSVFileName + ".csv", "w", newline="") as f:
+        # Extract headings from the first record
+        if file_data:
+            headings = list(file_data[0].keys())
 
-        HeadingList = []
-        for d in range(len(File_Data)):
+            # Write to CSV file
+            with open(CSVFileName + ".csv", "w", newline="") as f:
+                writer = csv.writer(f)
+                writer.writerow(headings)  # Write headings
 
-            for k in range(len(File_Data[d])):
-                                
-                for h in File_Data[d]:
+                # Write data rows
+                for record in file_data:
+                    writer.writerow([record[key] for key in headings])
+        else:
+            print(f"No data found in {path}.dat")
 
-                    HeadingList.append(h)
-                    
-        CSVheading = HeadingList[0 : len(File_Data[d]) : 1]
-
-        wobjH = csv.writer(f)
-
-        wobjH.writerow(CSVheading)
-
-    with open(CSVFileName + ".csv", "a", newline="") as f:
-
-        wobjD = csv.writer(f)
-
-        for data in range(len(File_Data)):
-
-            AddDataList = []
-            for key in File_Data[data]:
-                AddDataList.append(File_Data[data][key])
-
-            wobjD.writerow(AddDataList)
+    except FileNotFoundError:
+        print(f"File not found: {path}")
