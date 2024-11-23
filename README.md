@@ -8,12 +8,32 @@ PyFileMaster is an open-source Python package designed to simplify file handling
 With PyFileMaster, file operations become seamless. Simply provide the file path, and let the library handle the heavy lifting for you — no need for extra code or complex logic!
 
 ## **Features and Functionalities (As of ![PyPI](https://img.shields.io/pypi/v/pyfilemaster))**
+
+- **Write Binary Files (`writeBinFile`)**  
+  It creates a Binary file containing Data which is being passed, *List of dictionaries to be stored in the file*:
+  ```python
+  import pyfilemaster as pfm
+
+  pfm.writeBinFile("<path_name_of_your_binary_file>" , [
+      {
+          'name': 'Andrew',
+          'language': 'python'
+      },
+      {
+          'name': 'Tristan',
+          'language': 'JavaScript'
+      }
+  ])
+
+  ```
+
 - **Read Binary Files (`readBinFile`)**  
   Effortlessly reads and prints the contents of a binary (.dat) file.
   ```python
   import pyfilemaster as pfm
 
   pfm.readBinFile("<path_to_your_binary_file>")
+  ```
 
 - **Convert Binary to CSV (`convertBinToCSV`)**  
   Converts data from a binary (.dat) file to a CSV (Excel) file in just one step.
@@ -21,11 +41,10 @@ With PyFileMaster, file operations become seamless. Simply provide the file path
   import pyfilemaster as pfm
 
   pfm.convertBinToCSV("<path_to_your_binary_file>", "<name_of_the_generated_csv_file>")
-
   ```
 
 ## **Installation**
-### *Install the Latest Version*
+### *Install the Latest Version ![PyPI](https://img.shields.io/pypi/v/pyfilemaster)*
 To get started with PyFileMaster, install it via `pip`:
 
 ```bash
