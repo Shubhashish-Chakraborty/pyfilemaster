@@ -1,6 +1,28 @@
 import pickle
 import csv
 
+def writeBinFile(path, data):
+    """
+    Writes data to a binary `.dat` file.
+
+    Parameters:
+        path (str): Path to the `.dat` file (with or without extension(.dat)).
+        data (list): List of dictionaries to be stored in the file.
+    """
+
+    if (path.lower()[-1:-5:-1][::-1] == ".dat"):
+        path = path.lower().rstrip(".dat")
+    else:
+        pass
+
+    try:
+        with open(path + ".dat", "ab") as f:
+            for record in data:
+                pickle.dump(record, f)
+        print(f"Data successfully written to {path}.dat")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
 def readBinFile(path):
     """
     Reads and prints the contents of a binary `.dat` file.
