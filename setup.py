@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pyfilemaster',  # Package name
-    version='0.1.6',  # Initial release version
+    version='0.1.7',  # Initial release version
     author='beingshubh (Shubhashish Chakraborty)',  # Author name
     author_email='shubhashish147@gmail.com',  # Author email
     description='A Python package for file handling utilities',  # Short description
@@ -18,6 +18,6 @@ setup(
     ],
     python_requires='>=3.6',  # Minimum Python version
     install_requires=[],  # e.g., ['pandas>=1.0']
-    keywords='file handling, binary to CSV, utilities , python , binary , csv , text , excel , dat',  # Keywords for PyPI search
+    keywords='pyfilemaster , pyfilemaster pypi , pyfilemaster github, file handling, binary to CSV, binary , csv , text , excel , dat, file conversion , pyfilemaster python, pyfilemaster python package',  # Keywords for PyPI search
     license="MIT",  # Specify license
 )
