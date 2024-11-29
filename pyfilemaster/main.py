@@ -40,7 +40,7 @@ def readBinFile(path):
         with open(path + ".dat", "rb") as f:
             while True:
                 try:
-                    print(pickle.load(f))
+                    return (pickle.load(f))
                 except EOFError:
                     break
     except FileNotFoundError:

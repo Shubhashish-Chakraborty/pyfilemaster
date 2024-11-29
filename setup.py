@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pyfilemaster',  # Package name
-    version='0.1.7',  # Initial release version
+    version='0.1.8',  # Initial release version
     author='beingshubh (Shubhashish Chakraborty)',  # Author name
     author_email='shubhashish147@gmail.com',  # Author email
     description='A Python package for file handling utilities',  # Short description

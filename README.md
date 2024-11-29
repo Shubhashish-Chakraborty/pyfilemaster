@@ -31,8 +31,10 @@ With PyFileMaster, file operations become seamless. Simply provide the file path
   Effortlessly reads and prints the contents of a binary (.dat) file.
   ```python
   import pyfilemaster as pfm
-
-  pfm.readBinFile("<path_to_your_binary_file>")
+  
+  fileData = pfm.readBinFile("<path_to_your_binary_file>")
+  
+  print(fileData)
   ```
 
 - **Convert Binary to CSV (`convertBinToCSV`)**  
